@@ -7,11 +7,11 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { path: "/", label: "Home", colorClass: "" },
-  { path: "/case-studies", label: "Case Studies", colorClass: "md:bg-accent-orange md:text-accent-orange-foreground md:px-3 md:py-1 md:rounded-full" },
-  { path: "/leadership", label: "Leadership & Practice", colorClass: "md:bg-accent-grey md:text-accent-grey-foreground md:px-3 md:py-1 md:rounded-full" },
-  { path: "/writing", label: "Writing", colorClass: "md:bg-accent-green md:text-accent-green-foreground md:px-3 md:py-1 md:rounded-full" },
-  { path: "/about", label: "About", colorClass: "" },
+  { path: "/", label: "Home", hoverClass: "" },
+  { path: "/case-studies", label: "Case Studies", hoverClass: "md:hover:bg-accent-orange md:hover:text-accent-orange-foreground" },
+  { path: "/leadership", label: "Leadership & Practice", hoverClass: "md:hover:bg-accent-grey md:hover:text-accent-grey-foreground" },
+  { path: "/writing", label: "Writing", hoverClass: "md:hover:bg-accent-green md:hover:text-accent-green-foreground" },
+  { path: "/about", label: "About", hoverClass: "" },
 ];
 
 export function Layout({ children }: LayoutProps) {
@@ -35,11 +35,11 @@ export function Layout({ children }: LayoutProps) {
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className={`transition-colors no-underline ${item.colorClass} ${
+                    className={`transition-colors no-underline px-3 py-1 rounded-full ${item.hoverClass} ${
                       location.pathname === item.path
-                        ? "font-medium"
-                        : "hover:opacity-80"
-                    } ${!item.colorClass ? (location.pathname === item.path ? "text-foreground" : "text-muted-foreground hover:text-foreground") : ""}`}
+                        ? "text-foreground font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                   >
                     {item.label}
                   </Link>
