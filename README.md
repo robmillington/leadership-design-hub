@@ -1,73 +1,154 @@
-# Welcome to your Lovable project
+# Head of Product Design Portfolio
 
-## Project info
+A clean, content-driven portfolio website for a senior design leader. Built with React + Vite, styled with Tailwind CSS, and driven by Markdown content.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+- **Content-driven architecture**: Case studies and blog posts stored as TypeScript files with embedded Markdown
+- **Clean, typographic design**: Serif headings (Instrument Serif) + sans body (Inter), cool neutrals with slate blue accent
+- **Fully exportable**: No database, no auth, no platform dependencies
+- **Fast**: Static site with minimal JavaScript
 
-There are several ways of editing your application.
+## Project Structure
 
-**Use Lovable**
+```
+├── src/
+│   ├── components/         # Reusable UI components
+│   │   ├── Layout.tsx      # Page layout with nav and footer
+│   │   ├── ContentCard.tsx # Card for listing content items
+│   │   └── MarkdownRenderer.tsx # Renders markdown content
+│   ├── content/            # Content files
+│   │   ├── case-studies/   # Case study content
+│   │   ├── writing/        # Blog post content
+│   │   └── index.ts        # Content exports and utilities
+│   ├── lib/                # Utility functions
+│   │   └── content.ts      # Markdown parsing, date formatting
+│   ├── pages/              # Page components
+│   └── index.css           # Design system tokens
+├── public/                 # Static assets
+└── README.md
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Running Locally
 
-Changes made via Lovable will be committed automatically to this repo.
+```bash
+# Install dependencies
+npm install
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The site will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Building for Production
 
-**Use GitHub Codespaces**
+```bash
+# Build static site
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build locally
+npm run preview
+```
 
-## What technologies are used for this project?
+The build output will be in the `dist/` folder.
 
-This project is built with:
+## Deploying to Netlify
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Option 1: Drag and Drop
+1. Run `npm run build`
+2. Go to [Netlify Drop](https://app.netlify.com/drop)
+3. Drag the `dist/` folder onto the page
 
-## How can I deploy this project?
+### Option 2: Git Integration
+1. Push your code to GitHub
+2. Connect the repository to Netlify
+3. Set build command: `npm run build`
+4. Set publish directory: `dist`
+5. Deploy
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### Option 3: Netlify CLI
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
 
-## Can I connect a custom domain to my Lovable project?
+# Build and deploy
+npm run build
+netlify deploy --prod --dir=dist
+```
 
-Yes, you can!
+## Adding Content
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### New Case Study
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1. Create a new file in `src/content/case-studies/`:
+
+```typescript
+// src/content/case-studies/your-case-study.ts
+export const content = `---
+title: "Your Case Study Title"
+summary: "A brief 2-3 sentence overview."
+date: "2024-01-15"
+tags: ["design-systems", "leadership"]
+featured: true
+role: "Head of Product Design"
+---
+
+## Context and constraints
+
+Your content here...
+`;
+
+export default content;
+```
+
+2. Add the import to `src/content/index.ts`:
+
+```typescript
+import { content as yourCaseStudy } from "./case-studies/your-case-study";
+
+export const caseStudies: ContentItem[] = sortByDate([
+  // ... existing case studies
+  parseContent(yourCaseStudy, "your-case-study"),
+]);
+```
+
+### New Blog Post
+
+Same process, but in `src/content/writing/` and added to the `writingPosts` array.
+
+### Frontmatter Options
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `title` | Yes | Page title |
+| `summary` | Yes | 2-3 sentence overview |
+| `date` | Yes | Publication date (YYYY-MM-DD) |
+| `tags` | Yes | Array of topic tags |
+| `featured` | No | Show on homepage (default: false) |
+| `role` | No | Your role for case studies |
+| `coverImage` | No | Path to cover image |
+
+## Customisation
+
+### Typography
+Fonts are loaded via Google Fonts in `src/index.css`. Change the import URL and `--font-serif` / `--font-sans` custom properties.
+
+### Colours
+All colours are defined as HSL values in `src/index.css` under `:root`. The accent colour is `--primary`.
+
+### Content Width
+Adjust the `.container-narrow` and `.container-wide` utilities in `src/index.css`.
+
+## Tech Stack
+
+- **React 18** - UI framework
+- **Vite** - Build tool
+- **React Router** - Client-side routing
+- **Tailwind CSS** - Styling
+- **React Markdown** - Markdown rendering
+- **TypeScript** - Type safety
+
+## License
+
+MIT
