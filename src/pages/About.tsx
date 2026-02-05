@@ -95,12 +95,16 @@ export default function About() {
           <div className="prose">
             <p>
               I'm always interested in conversations about design leadership, 
-              building design teams, and the craft of product work. Feel free to reach out.
+              building design teams, and the craft of product work.
             </p>
-            <p className="text-muted-foreground">
-              <em>
-                [Add your preferred contact method here—LinkedIn, email, Twitter, etc.]
-              </em>
+            <p>
+              <a
+                href="https://www.linkedin.com/in/rmillington/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact me on LinkedIn →
+              </a>
             </p>
           </div>
         </section>
