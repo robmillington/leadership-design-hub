@@ -6,12 +6,14 @@ interface ContentCardProps {
   item: ContentItem;
   basePath: string;
   showReadingTime?: boolean;
+  titleHoverClass?: string;
 }
 
 export function ContentCard({
   item,
   basePath,
   showReadingTime = false,
+  titleHoverClass = "group-hover:text-primary",
 }: ContentCardProps) {
   const readingTime = calculateReadingTime(item.content);
 
@@ -31,7 +33,7 @@ export function ContentCard({
               </>
             )}
           </div>
-          <h3 className="text-foreground group-hover:text-primary transition-colors">
+          <h3 className={`text-foreground ${titleHoverClass} transition-colors`}>
             {item.meta.title}
           </h3>
           <p className="text-muted-foreground leading-relaxed">

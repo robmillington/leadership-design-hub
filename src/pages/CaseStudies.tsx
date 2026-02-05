@@ -21,6 +21,7 @@ export default function CaseStudies() {
               key={item.slug}
               item={item}
               basePath="/case-studies"
+              titleHoverClass="group-hover:text-accent-orange-foreground"
             />
           ))}
         </div>

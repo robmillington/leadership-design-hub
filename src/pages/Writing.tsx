@@ -22,6 +22,7 @@ export default function Writing() {
               item={item}
               basePath="/writing"
               showReadingTime
+              titleHoverClass="group-hover:text-accent-green-foreground"
             />
           ))}
         </div>

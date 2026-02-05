@@ -55,6 +55,7 @@ export default function Index() {
                 key={item.slug}
                 item={item}
                 basePath="/case-studies"
+                titleHoverClass="group-hover:text-accent-orange-foreground"
               />
             ))}
           </div>
@@ -80,6 +81,7 @@ export default function Index() {
                 item={item}
                 basePath="/writing"
                 showReadingTime
+                titleHoverClass="group-hover:text-accent-green-foreground"
               />
             ))}
           </div>
