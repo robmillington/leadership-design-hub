@@ -52,6 +52,45 @@
     --font-serif: 'Noto Serif', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
   }
+
+  .dark {
+    /* Dark theme: dark grey background, light grey text */
+    --background: 220 15% 12%;
+    --foreground: 210 15% 88%;
+
+    --card: 220 15% 16%;
+    --card-foreground: 210 15% 88%;
+
+    --popover: 220 15% 16%;
+    --popover-foreground: 210 15% 88%;
+
+    --primary: 215 50% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 210 15% 88%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 210 10% 65%;
+
+    --accent: 215 50% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 24%;
+    --input: 220 15% 24%;
+    --ring: 215 50% 55%;
+
+    /* Section/Nav accent colors - dark variants */
+    --accent-grey: 220 12% 24%;
+    --accent-grey-foreground: 210 15% 88%;
+    --accent-orange: 30 50% 28%;
+    --accent-orange-foreground: 30 30% 90%;
+    --accent-green: 140 30% 24%;
+    --accent-green-foreground: 140 30% 88%;
+  }
 }
 
 @layer base {
@@ -61,6 +100,7 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   body {

@@ -4,7 +4,9 @@ export default function About() {
   return (
     <Layout>
       <article className="container-narrow py-20">
-        <h1 className="mb-6">About</h1>
+        <h1 className="mb-6">
+          <span className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-accent-grey text-accent-grey-foreground px-4 py-1.5 rounded-full">About</span>
+        </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mb-16">
           Two decades of designing products and building the teams that design them.
         </p>

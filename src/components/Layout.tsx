@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Linkedin } from "lucide-react";
+import { useTheme } from "next-themes";
+import { Menu, X, Linkedin, Moon, Sun } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -16,11 +17,26 @@ const navItems = [
 export function Layout({ children }: LayoutProps) {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="border-b border-border">
-        <nav className="container-wide py-6">
+      <header
+        className={`sticky top-0 z-50 border-b border-border transition-[padding,background-color] duration-200 ${
+          scrolled
+            ? "py-3 backdrop-blur-md bg-background/80 border-border/80"
+            : "py-6 bg-background"
+        }`}
+      >
+        <nav className="container-wide">
           <div className="flex items-center justify-between">
             <Link
               to="/"
@@ -85,15 +101,30 @@ export function Layout({ children }: LayoutProps) {
         <div className="container-wide py-12">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} · Rob Millington</p>
-            <a
-              href="https://www.linkedin.com/in/rmillington/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
+            <div className="flex items-center gap-4">
+              <button
+                type="button"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                {theme === "dark" ? (
+                  <Sun size={20} aria-hidden />
+                ) : (
+                  <Moon size={20} aria-hidden />
+                )}
+                <span>{theme === "dark" ? "Light mode" : "Dark mode"}</span>
+              </button>
+              <a
+                href="https://www.linkedin.com/in/rmillington/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
         </div>
       </footer>
