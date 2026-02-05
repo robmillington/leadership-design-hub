@@ -11,7 +11,7 @@ const navItems = [
   { path: "/case-studies", label: "Case Studies", hoverClass: "md:hover:bg-accent-orange md:hover:text-accent-orange-foreground" },
   { path: "/leadership", label: "Leadership & Practice", hoverClass: "md:hover:bg-accent-grey md:hover:text-accent-grey-foreground" },
   { path: "/writing", label: "Writing", hoverClass: "md:hover:bg-accent-green md:hover:text-accent-green-foreground" },
-  { path: "/about", label: "About", hoverClass: "" },
+  { path: "/about", label: "About", hoverClass: "md:hover:bg-accent-grey md:hover:text-accent-grey-foreground" },
 ];
 
 export function Layout({ children }: LayoutProps) {
