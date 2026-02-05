@@ -4,7 +4,9 @@ export default function Leadership() {
   return (
     <Layout>
       <article className="container-narrow py-20">
-        <h1 className="mb-6">Leadership & Practice</h1>
+        <h1 className="mb-6">
+          <span className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-accent-grey text-accent-grey-foreground px-4 py-1.5 rounded-full">Leadership & Practice</span>
+        </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mb-16">
           How I think about leading design teams, building craft at scale, and 
           creating the conditions for great product work.

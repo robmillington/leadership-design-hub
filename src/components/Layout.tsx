@@ -7,11 +7,11 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { path: "/", label: "Home" },
-  { path: "/case-studies", label: "Case Studies" },
-  { path: "/leadership", label: "Leadership & Practice" },
-  { path: "/writing", label: "Writing" },
-  { path: "/about", label: "About" },
+  { path: "/", label: "Home", colorClass: "" },
+  { path: "/case-studies", label: "Case Studies", colorClass: "md:bg-accent-orange md:text-accent-orange-foreground md:px-3 md:py-1 md:rounded-full" },
+  { path: "/leadership", label: "Leadership & Practice", colorClass: "md:bg-accent-grey md:text-accent-grey-foreground md:px-3 md:py-1 md:rounded-full" },
+  { path: "/writing", label: "Writing", colorClass: "md:bg-accent-green md:text-accent-green-foreground md:px-3 md:py-1 md:rounded-full" },
+  { path: "/about", label: "About", colorClass: "" },
 ];
 
 export function Layout({ children }: LayoutProps) {
@@ -30,17 +30,16 @@ export function Layout({ children }: LayoutProps) {
               Rob Millington
             </Link>
 
-            {/* Desktop navigation */}
-            <ul className="hidden md:flex gap-6 text-sm">
+            <ul className="hidden md:flex items-center gap-4 text-sm">
               {navItems.map((item) => (
                 <li key={item.path}>
                   <Link
                     to={item.path}
-                    className={`transition-colors no-underline ${
+                    className={`transition-colors no-underline ${item.colorClass} ${
                       location.pathname === item.path
-                        ? "text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
+                        ? "font-medium"
+                        : "hover:opacity-80"
+                    } ${!item.colorClass ? (location.pathname === item.path ? "text-foreground" : "text-muted-foreground hover:text-foreground") : ""}`}
                   >
                     {item.label}
                   </Link>
