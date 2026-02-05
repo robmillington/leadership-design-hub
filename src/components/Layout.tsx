@@ -7,7 +7,6 @@ interface LayoutProps {
 }
 
 const navItems = [
-  { path: "/", label: "Home", hoverClass: "" },
   { path: "/case-studies", label: "Case Studies", hoverClass: "md:hover:bg-accent-orange md:hover:text-accent-orange-foreground" },
   { path: "/leadership", label: "Leadership & Practice", hoverClass: "md:hover:bg-accent-grey md:hover:text-accent-grey-foreground" },
   { path: "/writing", label: "Writing", hoverClass: "md:hover:bg-accent-green md:hover:text-accent-green-foreground" },
