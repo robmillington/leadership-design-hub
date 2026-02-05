@@ -21,7 +21,7 @@ export default function Index() {
       {/* Current Role */}
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
-          <h2 className="text-2xl mb-6">Currently</h2>
+          <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-primary text-primary-foreground px-4 py-1.5 rounded-full mb-6">Currently</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
               <strong className="text-foreground">Head of Product Design</strong> leading 
@@ -41,7 +41,7 @@ export default function Index() {
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl mb-0">Selected Work</h2>
+            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-primary text-primary-foreground px-4 py-1.5 rounded-full">Selected Work</h2>
             <Link
               to="/case-studies"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -65,7 +65,7 @@ export default function Index() {
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl mb-0">Recent Writing</h2>
+            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-primary text-primary-foreground px-4 py-1.5 rounded-full">Recent Writing</h2>
             <Link
               to="/writing"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
