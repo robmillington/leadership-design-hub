@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Linkedin } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -84,9 +84,17 @@ export function Layout({ children }: LayoutProps) {
 
       <footer className="border-t border-border mt-24">
         <div className="container-wide py-12">
-          <div className="flex flex-col sm:flex-row justify-between gap-4 text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} · Head of Product Design</p>
-            <p>Built with React + Vite · No dependencies on proprietary platforms</p>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} · Rob Millington</p>
+            <a
+              href="https://www.linkedin.com/in/rmillington/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
           </div>
         </div>
       </footer>
