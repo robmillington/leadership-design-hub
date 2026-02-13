@@ -7,7 +7,7 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen">
-      <main>{children}</main>
+      <main className="pt-24">{children}</main>
 
       <footer className="border-t border-border mt-24 pb-24">
         <div className="container-wide py-12">

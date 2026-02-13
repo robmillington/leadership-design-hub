@@ -33,9 +33,9 @@ export default function WritingDetail() {
           >
             ← Back to writing
           </Link>
-          
+
           <h1 className="mt-4 mb-6">{post.meta.title}</h1>
-          
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
             {post.meta.date && (
               <>
@@ -54,18 +54,7 @@ export default function WritingDetail() {
             </p>
           )}
 
-          {post.meta.tags && post.meta.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-6">
-              {post.meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-2 py-1 bg-secondary text-secondary-foreground rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+
         </header>
 
         {/* Content */}

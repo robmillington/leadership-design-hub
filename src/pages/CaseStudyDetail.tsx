@@ -33,9 +33,9 @@ export default function CaseStudyDetail() {
           >
             ← Back to case studies
           </Link>
-          
+
           <h1 className="mt-4 mb-6">{caseStudy.meta.title}</h1>
-          
+
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
             {caseStudy.meta.date && (
               <>
@@ -60,18 +60,7 @@ export default function CaseStudyDetail() {
             </p>
           )}
 
-          {caseStudy.meta.tags && caseStudy.meta.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-6">
-              {caseStudy.meta.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-2 py-1 bg-secondary text-secondary-foreground rounded"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+
         </header>
 
         {/* Content */}

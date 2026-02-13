@@ -19,9 +19,7 @@ export default function Index() {
     <Layout>
       {/* Hero Section */}
       <section className="container-narrow py-20 md:py-32">
-        <h1 className="mb-8">
-          Rob Millington
-        </h1>
+
         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
           I lead teams that build products at scale. Twenty years of experience
           spanning hands-on crafting, design systems, research operations, and

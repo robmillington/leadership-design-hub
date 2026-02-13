@@ -25,7 +25,7 @@ export function Header() {
 
     return (
         <header
-            className={`sticky top-0 z-50 border-b transition-[padding,background-color] duration-200 ${scrolled
+            className={`fixed top-0 left-0 w-full z-50 border-b transition-[padding,background-color] duration-200 ${scrolled
                 ? "py-3 border-border/40"
                 : "py-6 border-transparent"
                 } ${

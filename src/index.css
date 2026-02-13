@@ -104,14 +104,17 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-muted-foreground font-sans antialiased;
     font-feature-settings: "cv11", "ss01";
   }
 
   /* Serif headings */
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-serif);
-    @apply font-normal tracking-tight;
+    @apply font-normal tracking-tight text-foreground;
   }
 
   h1 {
@@ -133,6 +136,10 @@
   /* Body text */
   p {
     @apply text-base md:text-lg leading-relaxed;
+  }
+
+  strong {
+    @apply font-semibold text-foreground;
   }
 
   /* Links */
@@ -165,7 +172,8 @@
     @apply mb-6;
   }
 
-  .prose ul, .prose ol {
+  .prose ul,
+  .prose ol {
     @apply mb-6 pl-6;
   }
 
@@ -225,6 +233,7 @@
   0% {
     filter: hue-rotate(0deg);
   }
+
   100% {
     filter: hue-rotate(360deg);
   }
@@ -234,12 +243,15 @@
   0% {
     transform: translate(0%, 0%) rotate(0deg);
   }
+
   33% {
     transform: translate(10%, -10%) rotate(120deg);
   }
+
   66% {
     transform: translate(-10%, 10%) rotate(240deg);
   }
+
   100% {
     transform: translate(0%, 0%) rotate(360deg);
   }
@@ -255,6 +267,7 @@
 
 /* Respect prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-hue-cycle,
   .animate-gradient-move {
     animation: none;
