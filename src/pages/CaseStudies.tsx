@@ -1,8 +1,10 @@
 import { Layout } from "@/components/Layout";
 import { ContentCard } from "@/components/ContentCard";
-import { caseStudies } from "@/content";
+import { getAll } from "@/lib/content";
 
 export default function CaseStudies() {
+  const caseStudies = getAll("case-studies");
+
   return (
     <Layout>
       <section className="container-narrow py-20">

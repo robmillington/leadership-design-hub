@@ -1,12 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
-import { getCaseStudyBySlug } from "@/content";
-import { formatDate, calculateReadingTime } from "@/lib/content";
+import { Markdown } from "@/components/Markdown";
+import { getBySlug, formatDate, calculateReadingTime } from "@/lib/content";
 
 export default function CaseStudyDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const caseStudy = slug ? getCaseStudyBySlug(slug) : undefined;
+  const caseStudy = slug ? getBySlug("case-studies", slug) : undefined;
 
   if (!caseStudy) {
     return (
@@ -21,7 +20,7 @@ export default function CaseStudyDetail() {
     );
   }
 
-  const readingTime = calculateReadingTime(caseStudy.content);
+  const readingTime = calculateReadingTime(caseStudy.body);
 
   return (
     <Layout>
@@ -38,10 +37,14 @@ export default function CaseStudyDetail() {
           <h1 className="mt-4 mb-6">{caseStudy.meta.title}</h1>
           
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-            <time dateTime={caseStudy.meta.date}>
-              {formatDate(caseStudy.meta.date)}
-            </time>
-            <span>·</span>
+            {caseStudy.meta.date && (
+              <>
+                <time dateTime={caseStudy.meta.date}>
+                  {formatDate(caseStudy.meta.date)}
+                </time>
+                <span>·</span>
+              </>
+            )}
             <span>{readingTime} min read</span>
             {caseStudy.meta.role && (
               <>
@@ -51,9 +54,11 @@ export default function CaseStudyDetail() {
             )}
           </div>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            {caseStudy.meta.summary}
-          </p>
+          {caseStudy.meta.summary && (
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {caseStudy.meta.summary}
+            </p>
+          )}
 
           {caseStudy.meta.tags && caseStudy.meta.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-6">
@@ -71,7 +76,7 @@ export default function CaseStudyDetail() {
 
         {/* Content */}
         <div className="border-t border-border pt-12">
-          <MarkdownRenderer content={caseStudy.content} />
+          <Markdown content={caseStudy.body} />
         </div>
       </article>
     </Layout>

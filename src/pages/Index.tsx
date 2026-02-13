@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { ContentCard } from "@/components/ContentCard";
-import { featuredCaseStudies, featuredWriting } from "@/content";
+import { getAll } from "@/lib/content";
+
+function getFeaturedOrRecent<T>(items: T[], featured: (i: T) => boolean, take: number): T[] {
+  const filtered = items.filter(featured);
+  if (filtered.length > 0) return filtered.slice(0, take);
+  return items.slice(0, take);
+}
+
+const allCaseStudies = getAll("case-studies");
+const allWriting = getAll("writing");
+const featuredCaseStudies = getFeaturedOrRecent(allCaseStudies, (i) => !!i.meta.featured, 3);
+const featuredWriting = getFeaturedOrRecent(allWriting, (i) => !!i.meta.featured, 2);
 
 export default function Index() {
   return (

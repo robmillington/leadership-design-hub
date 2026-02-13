@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { formatDate, calculateReadingTime } from "@/lib/content";
-import { ContentItem } from "@/lib/content";
+import { formatDate, calculateReadingTime, type ContentItem } from "@/lib/content";
 
 interface ContentCardProps {
   item: ContentItem;
@@ -15,7 +14,7 @@ export function ContentCard({
   showReadingTime = false,
   titleHoverClass = "group-hover:text-primary",
 }: ContentCardProps) {
-  const readingTime = calculateReadingTime(item.content);
+  const readingTime = calculateReadingTime(item.body);
 
   return (
     <article className="group">
@@ -25,20 +24,20 @@ export function ContentCard({
       >
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
-            <time dateTime={item.meta.date}>{formatDate(item.meta.date)}</time>
-            {showReadingTime && (
-              <>
-                <span>·</span>
-                <span>{readingTime} min read</span>
-              </>
+            {item.meta.date && (
+              <time dateTime={item.meta.date}>{formatDate(item.meta.date)}</time>
             )}
+            {item.meta.date && showReadingTime && <span>·</span>}
+            {showReadingTime && <span>{readingTime} min read</span>}
           </div>
           <h3 className={`text-foreground ${titleHoverClass} transition-colors`}>
             {item.meta.title}
           </h3>
-          <p className="text-muted-foreground leading-relaxed">
-            {item.meta.summary}
-          </p>
+          {item.meta.summary && (
+            <p className="text-muted-foreground leading-relaxed">
+              {item.meta.summary}
+            </p>
+          )}
           {item.meta.tags && item.meta.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-2">
               {item.meta.tags.map((tag) => (
