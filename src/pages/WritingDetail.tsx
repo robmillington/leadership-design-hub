@@ -1,12 +1,11 @@
 import { useParams, Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
-import { MarkdownRenderer } from "@/components/MarkdownRenderer";
-import { getWritingBySlug } from "@/content";
-import { formatDate, calculateReadingTime } from "@/lib/content";
+import { Markdown } from "@/components/Markdown";
+import { getBySlug, formatDate, calculateReadingTime } from "@/lib/content";
 
 export default function WritingDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug ? getWritingBySlug(slug) : undefined;
+  const post = slug ? getBySlug("writing", slug) : undefined;
 
   if (!post) {
     return (
@@ -21,7 +20,7 @@ export default function WritingDetail() {
     );
   }
 
-  const readingTime = calculateReadingTime(post.content);
+  const readingTime = calculateReadingTime(post.body);
 
   return (
     <Layout>
@@ -38,16 +37,22 @@ export default function WritingDetail() {
           <h1 className="mt-4 mb-6">{post.meta.title}</h1>
           
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-            <time dateTime={post.meta.date}>
-              {formatDate(post.meta.date)}
-            </time>
-            <span>·</span>
+            {post.meta.date && (
+              <>
+                <time dateTime={post.meta.date}>
+                  {formatDate(post.meta.date)}
+                </time>
+                <span>·</span>
+              </>
+            )}
             <span>{readingTime} min read</span>
           </div>
 
-          <p className="text-xl text-muted-foreground leading-relaxed">
-            {post.meta.summary}
-          </p>
+          {post.meta.summary && (
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              {post.meta.summary}
+            </p>
+          )}
 
           {post.meta.tags && post.meta.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mt-6">
@@ -65,7 +70,7 @@ export default function WritingDetail() {
 
         {/* Content */}
         <div className="border-t border-border pt-12">
-          <MarkdownRenderer content={post.content} />
+          <Markdown content={post.body} />
         </div>
       </article>
     </Layout>

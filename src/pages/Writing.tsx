@@ -1,8 +1,10 @@
 import { Layout } from "@/components/Layout";
 import { ContentCard } from "@/components/ContentCard";
-import { writingPosts } from "@/content";
+import { getAll } from "@/lib/content";
 
 export default function Writing() {
+  const writingPosts = getAll("writing");
+
   return (
     <Layout>
       <section className="container-narrow py-20">
