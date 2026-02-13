@@ -12,7 +12,7 @@ export function ContentCard({
   item,
   basePath,
   showReadingTime = false,
-  titleHoverClass = "group-hover:text-primary",
+  titleHoverClass = "group-hover:text-foreground",
 }: ContentCardProps) {
   const readingTime = calculateReadingTime(item.body);
 

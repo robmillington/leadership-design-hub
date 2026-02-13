@@ -20,11 +20,11 @@ export default function Index() {
       {/* Hero Section */}
       <section className="container-narrow py-20 md:py-32">
         <h1 className="mb-8">
-          Head of Product Design
+          Rob Millington
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-2xl">
-          I lead design teams that build products at scale. Twenty years of experience 
-          spanning hands-on craft, design systems, research operations, and 
+          I lead teams that build products at scale. Twenty years of experience
+          spanning hands-on crafting, design systems, research operations, and
           organisational design.
         </p>
       </section>
@@ -32,16 +32,16 @@ export default function Index() {
       {/* Current Role */}
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
-          <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-accent-grey text-accent-grey-foreground px-4 py-1.5 rounded-full mb-6">Currently</h2>
+          <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-white dark:bg-black/70 dark:backdrop-blur-xl text-black dark:text-white px-4 py-1.5 rounded-full mb-6 shadow-sm">Currently</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              <strong className="text-foreground">Head of Product Design</strong> leading 
-              a team of ~10 designers across multiple product squads. Responsible for 
+              <strong className="text-foreground">Head of Product Design</strong> leading
+              a team of ~10 designers across multiple product squads. Responsible for
               design systems, research operations, and the craft culture of the team.
             </p>
             <p>
-              My focus is on building the conditions where good design happens—through 
-              hiring, systems, rituals, and strategic direction—rather than doing the 
+              My focus is on building the conditions where good design happens—through
+              hiring, systems, rituals, and strategic direction—rather than doing the
               design myself.
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function Index() {
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-accent-orange text-accent-orange-foreground px-4 py-1.5 rounded-full">Selected Work</h2>
+            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-white dark:bg-black/70 dark:backdrop-blur-xl text-black dark:text-white px-4 py-1.5 rounded-full shadow-sm">Selected Work</h2>
             <Link
               to="/case-studies"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -66,7 +66,7 @@ export default function Index() {
                 key={item.slug}
                 item={item}
                 basePath="/case-studies"
-                titleHoverClass="group-hover:text-accent-orange-foreground"
+                titleHoverClass="group-hover:text-foreground"
               />
             ))}
           </div>
@@ -77,7 +77,7 @@ export default function Index() {
       <section className="container-narrow pb-20">
         <div className="border-t border-border pt-12">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-accent-green text-accent-green-foreground px-4 py-1.5 rounded-full">Recent Writing</h2>
+            <h2 className="inline-block text-sm font-sans font-medium tracking-widest uppercase bg-white dark:bg-black/70 dark:backdrop-blur-xl text-black dark:text-white px-4 py-1.5 rounded-full shadow-sm">Recent Writing</h2>
             <Link
               to="/writing"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -92,7 +92,7 @@ export default function Index() {
                 item={item}
                 basePath="/writing"
                 showReadingTime
-                titleHoverClass="group-hover:text-accent-green-foreground"
+                titleHoverClass="group-hover:text-foreground"
               />
             ))}
           </div>
