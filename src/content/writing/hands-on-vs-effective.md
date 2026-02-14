@@ -1,6 +1,6 @@
 ---
 title: The difference between being hands-on and being effective
-date: 2026-02-05
+summary: As a design leader, your leverage shifts from the pixels you create to the conditions you build. Knowing when to dive into the details and when to step back is the defining challenge of the role.
 tags: [leadership, craft]
 ---
 

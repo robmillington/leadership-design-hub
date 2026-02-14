@@ -12,6 +12,7 @@ export interface ContentMeta {
   featured?: boolean;
   role?: string;
   period?: string;
+  protected?: boolean;
 }
 
 export interface ContentItem {
@@ -39,6 +40,9 @@ function parseRaw(type: ContentType, raw: string, slug: string): ContentItem {
       (typeof data.featured === "string" && data.featured.toLowerCase() === "true"),
     role: data.role as string | undefined,
     period: data.period as string | undefined,
+    protected:
+      data.protected === true ||
+      (typeof data.protected === "string" && data.protected.toLowerCase() === "true"),
   };
   return { type, slug, meta, body: (content ?? "").trim() };
 }
@@ -82,16 +86,14 @@ function getFallbackWriting(): ContentItem[] {
   return sortItems([
     parseRaw("writing", `---
 title: Why design systems fail when teams grow
-summary: Design systems fail due to unclear ownership, not visual inconsistency.
-date: 2026-02-05
+summary: Building a component library is the easy part. The real challenge is the organisational design, ownership models, and social contracts required to keep it alive as a team scales.
 tags: [design-systems, scale]
 featured: true
 ---
 Design systems fail due to unclear ownership, not visual inconsistency.`, "why-design-systems-fail"),
     parseRaw("writing", `---
 title: Design leadership is mostly about removing uncertainty
-summary: Most organisations struggle not from lack of ideas, but from lack of confidence.
-date: 2026-02-05
+summary: In high-growth environments, leadership isn't about having all the answers. It's about building the frameworks and confidence the team needs to navigate ambiguity and make high-stakes decisions.
 tags: [design-leadership, decision-making]
 featured: true
 ---
@@ -102,12 +104,29 @@ Most organisations struggle not from lack of ideas, but from lack of confidence.
 function getFallbackCaseStudies(): ContentItem[] {
   return sortItems([
     parseRaw("case-studies", `---
+title: Awaze
+summary: Leading product design for high-traffic digital platforms, shaping both the experiences customers see and the teams and systems that deliver them.
+role: Head of Product Design
+period: 2021–Present
+tags: [leadership, design-systems, experimentation]
+protected: true
+featured: true
+---
+## Overview
+Leading product design across Cottages.com, Hoseasons, and Novasol. Supporting a platform handling ~300k daily sessions across multiple brands.
+
+## Key Outcomes
+- Built and scaled a shared multi-brand design system improving delivery speed and consistency.
+- Introduced research operations and experimentation practices to support optimisation and decision-making.
+- Partnered with product leadership on roadmap, funnel performance, and strategic initiatives.`, "awaze"),
+    parseRaw("case-studies", `---
 title: Barclays
 summary: Unlocking value from a high-traffic but under-optimised product surface in a regulated enterprise.
 role: UX & Product Design Specialist
 period: 2020–2021
 tags: [enterprise, financial-services, leadership]
 featured: true
+protected: false
 ---
 ## Context
 Millions of daily users, complex constraints, and fragmented ownership.
@@ -121,6 +140,7 @@ role: Head of Product Design
 period: 2018–2020
 tags: [healthcare, accessibility, leadership]
 featured: true
+protected: false
 ---
 ## Context
 The NHS App provides UK citizens with secure access to NHS services.`, "nhs-app"),
@@ -142,8 +162,19 @@ try {
   const w = loadFromGlob("writing", writingGlob);
   const c = loadFromGlob("case-studies", caseStudiesGlob);
 
-  writingItems = w.length > 0 ? sortItems(w) : getFallbackWriting();
-  caseStudyItems = c.length > 0 ? sortItems(c) : getFallbackCaseStudies();
+  const fallbackW = getFallbackWriting();
+  const fallbackC = getFallbackCaseStudies();
+
+  // Combine and deduplicate by slug (disk items take priority)
+  writingItems = sortItems([
+    ...w,
+    ...fallbackW.filter(f => !w.some(item => item.slug === f.slug))
+  ]);
+
+  caseStudyItems = sortItems([
+    ...c,
+    ...fallbackC.filter(f => !c.some(item => item.slug === f.slug))
+  ]);
 } catch {
   writingItems = getFallbackWriting();
   caseStudyItems = getFallbackCaseStudies();

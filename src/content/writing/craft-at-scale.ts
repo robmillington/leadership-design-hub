@@ -1,7 +1,6 @@
 export const content = `---
 title: "Craft at Scale: A Leadership Paradox"
 summary: "How to maintain design quality when you're responsible for more work than you can personally review."
-date: "2024-05-22"
 tags: ["craft", "leadership", "design-systems"]
 featured: false
 ---

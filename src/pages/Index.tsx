@@ -89,7 +89,6 @@ export default function Index() {
                 key={item.slug}
                 item={item}
                 basePath="/writing"
-                showReadingTime
                 titleHoverClass="group-hover:text-foreground"
               />
             ))}
