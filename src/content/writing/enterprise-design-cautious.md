@@ -1,6 +1,6 @@
 ---
 title: Enterprise design isn’t slow. It’s cautious.
-date: 2026-02-05
+summary: The pace of design in large-scale enterprises is often dismissed as "slow." In reality, it's a necessary response to the complexity of risk, regulation, and the scale of impact.
 tags: [enterprise, risk]
 ---
 

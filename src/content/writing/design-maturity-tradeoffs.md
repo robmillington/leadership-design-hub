@@ -1,6 +1,6 @@
 ---
 title: Design maturity shows up in how teams make trade-offs
-date: 2026-02-05
+summary: Mature design organisations don't search for perfect solutions. They understand that every decision has a cost, and they excel at making those trade-offs intentional and explicit.
 tags: [design-maturity, decision-making]
 ---
 

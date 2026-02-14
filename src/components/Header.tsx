@@ -87,6 +87,12 @@ export function Header() {
                                 </Link>
                             </li>
                         ))}
+                        <li className="pt-8 mt-8 border-t border-border/50">
+                            <p className="text-[10px] text-muted-foreground/50 uppercase tracking-[0.2em] leading-relaxed">
+                                Built with Lovable, <br />
+                                Antigravity and Netlify
+                            </p>
+                        </li>
                     </ul>
                 )}
             </nav>

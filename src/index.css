@@ -218,6 +218,7 @@
   }
 }
 
+
 @layer utilities {
   .container-narrow {
     @apply max-w-3xl mx-auto px-6;
@@ -226,6 +227,46 @@
   .container-wide {
     @apply max-w-5xl mx-auto px-6;
   }
+
+  /* Custom duration for transitions */
+  .duration-240 {
+    transition-duration: 240ms;
+  }
+}
+
+/* Collapsible animations */
+@keyframes collapse-down {
+  from {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes collapse-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.animate-collapse-down {
+  animation: collapse-down 240ms ease-in-out;
+}
+
+.animate-collapse-up {
+  animation: collapse-up 240ms ease-in-out;
 }
 
 /* Ambient background animations */
@@ -269,7 +310,9 @@
 @media (prefers-reduced-motion: reduce) {
 
   .animate-hue-cycle,
-  .animate-gradient-move {
+  .animate-gradient-move,
+  .animate-collapse-down,
+  .animate-collapse-up {
     animation: none;
   }
 }

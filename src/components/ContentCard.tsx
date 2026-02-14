@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatDate, calculateReadingTime, type ContentItem } from "@/lib/content";
+import { Lock } from "lucide-react";
 
 interface ContentCardProps {
   item: ContentItem;
@@ -29,6 +30,12 @@ export function ContentCard({
             )}
             {item.meta.date && showReadingTime && <span>·</span>}
             {showReadingTime && <span>{readingTime} min read</span>}
+            {item.meta.protected && (
+              <span className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-[10px] font-medium uppercase tracking-wider ml-auto">
+                <Lock size={10} />
+                Protected
+              </span>
+            )}
           </div>
           <h3 className={`text-foreground ${titleHoverClass} transition-colors group-hover:dark:text-white group-hover:text-black`}>
             {item.meta.title}

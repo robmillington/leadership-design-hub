@@ -1,7 +1,6 @@
 export const content = `---
 title: "Leading Design Through Ambiguity"
 summary: "On the difference between managing certainty and leading through uncertainty—and why senior design leadership is mostly the latter."
-date: "2024-08-10"
 tags: ["leadership", "strategy", "craft"]
 featured: true
 ---

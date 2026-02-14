@@ -1,6 +1,6 @@
 ---
 title: Accessibility isn’t a checklist. It’s a design constraint.
-date: 2026-02-05
+summary: Inclusive design is often treated as a final audit step. But when treated as a primary constraint, it forces better clarity, hierarchy, and usability for every single user.
 tags: [accessibility, inclusive-design]
 featured: true
 ---

@@ -1,6 +1,6 @@
 ---
 title: Design leadership is mostly about removing uncertainty
-date: 2026-02-05
+summary: In high-growth environments, leadership isn't about having all the answers. It's about building the frameworks and confidence the team needs to navigate ambiguity and make high-stakes decisions.
 tags: [design-leadership, decision-making]
 featured: true
 ---

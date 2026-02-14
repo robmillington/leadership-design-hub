@@ -36,18 +36,6 @@ export default function WritingDetail() {
 
           <h1 className="mt-4 mb-6">{post.meta.title}</h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-            {post.meta.date && (
-              <>
-                <time dateTime={post.meta.date}>
-                  {formatDate(post.meta.date)}
-                </time>
-                <span>·</span>
-              </>
-            )}
-            <span>{readingTime} min read</span>
-          </div>
-
           {post.meta.summary && (
             <p className="text-xl text-muted-foreground leading-relaxed">
               {post.meta.summary}
