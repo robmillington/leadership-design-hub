@@ -1,3 +1,4 @@
+import React from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -39,9 +40,31 @@ export function Markdown({ content }: MarkdownProps) {
             );
           },
           hr: () => <hr />,
-          img: ({ src, alt }) => (
-            <img src={src ?? ""} alt={alt ?? ""} loading="lazy" />
-          ),
+          img: ({ src, alt }) => {
+            const [imageError, setImageError] = React.useState(false);
+
+            if (!src || imageError) {
+              return (
+                <div className="w-full h-64 bg-secondary rounded-lg md:rounded-xl my-12 flex items-center justify-center text-muted-foreground">
+                  <div className="text-center">
+                    <p className="text-sm">Image unavailable</p>
+                    {alt && <p className="text-xs mt-2">{alt}</p>}
+                  </div>
+                </div>
+              );
+            }
+
+            return (
+              <img
+                src={src}
+                alt={alt ?? ""}
+                loading="lazy"
+                className="w-full h-auto rounded-lg md:rounded-xl my-12"
+                onError={() => setImageError(true)}
+                style={{ aspectRatio: 'auto' }}
+              />
+            );
+          },
         }}
       >
         {content}

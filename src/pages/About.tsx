@@ -1,10 +1,24 @@
 import { Layout } from "@/components/Layout";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function About() {
   const [isEarlierWorkOpen, setIsEarlierWorkOpen] = useState(false);
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash === "#earlier-work") {
+      setIsEarlierWorkOpen(true);
+      setTimeout(() => {
+        const element = document.getElementById("earlier-work");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [hash]);
 
   return (
     <Layout>
@@ -65,17 +79,7 @@ export default function About() {
               </div>
 
               <div>
-                <h3 className="text-xl mb-3">NHS App — Lead Product Designer (via BJSS / Sparck)</h3>
-                <ul className="space-y-1.5">
-                  <li>Core design role on a nationally scaled product delivered in under a year</li>
-                  <li>Designed critical journeys in a regulated environment, balancing usability, security and trust</li>
-                  <li>Led UX research through regular sessions to capture needs and validate direction</li>
-                  <li>Rapid prototyping from design tools into higher-fidelity prototypes for testing and alignment</li>
-                </ul>
-              </div>
-
-              <div>
-                <h3 className="text-xl mb-3">Thomas Cook &amp; Condor Airlines — UX &amp; Design Lead (2019)</h3>
+                <h3 className="text-xl mb-3">Thomas Cook Airlines — Head of Design (2018–2019)</h3>
                 <ul className="space-y-1.5">
                   <li>Set up team culture and product design ways of working across multiple squads</li>
                   <li>Built a digital design system to improve consistency across the estate</li>
@@ -85,11 +89,12 @@ export default function About() {
               </div>
 
               <div>
-                <h3 className="text-xl mb-3">Hitachi / Salford Royal — Senior UX &amp; Design Manager (Contract, 2019–2020)</h3>
+                <h3 className="text-xl mb-3">NHS App — Lead Product Designer (2017–2019)</h3>
                 <ul className="space-y-1.5">
-                  <li>Discovery for hospital bed management and patient flow systems</li>
-                  <li>Service and systems thinking across operational healthcare environments</li>
-                  <li>Worked across complex stakeholder groups to map problems and define opportunities</li>
+                  <li>Core design role on a nationally scaled product delivered in under a year</li>
+                  <li>Designed critical journeys in a regulated environment, balancing usability, security and trust</li>
+                  <li>Led UX research through regular sessions to capture needs and validate direction</li>
+                  <li>Rapid prototyping from design tools into higher-fidelity prototypes for testing and alignment</li>
                 </ul>
               </div>
             </div>
@@ -97,7 +102,7 @@ export default function About() {
         </section>
 
         {/* Earlier Creative & Interactive Work - Expandable */}
-        <section className="border-t border-border pt-12 mb-16">
+        <section id="earlier-work" className="border-t border-border pt-12 mb-16">
           <Collapsible open={isEarlierWorkOpen} onOpenChange={setIsEarlierWorkOpen}>
             <CollapsibleTrigger asChild>
               <button
@@ -112,9 +117,8 @@ export default function About() {
                   </p>
                 </div>
                 <ChevronDown
-                  className={`ml-4 h-5 w-5 text-muted-foreground transition-transform duration-240 ease-in-out flex-shrink-0 ${
-                    isEarlierWorkOpen ? "rotate-180" : ""
-                  }`}
+                  className={`ml-4 h-5 w-5 text-muted-foreground transition-transform duration-240 ease-in-out flex-shrink-0 ${isEarlierWorkOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
             </CollapsibleTrigger>
@@ -124,6 +128,15 @@ export default function About() {
             >
               <div className="prose pt-6">
                 <div className="space-y-8">
+                  <div>
+                    <h3 className="text-xl mb-3">Hitachi / Salford Royal — Senior UX &amp; Design Manager (2019–2020)</h3>
+                    <ul className="space-y-1.5">
+                      <li>Discovery for hospital bed management and patient flow systems</li>
+                      <li>Service and systems thinking across operational healthcare environments</li>
+                      <li>Worked across complex stakeholder groups to map problems and define opportunities</li>
+                    </ul>
+                  </div>
+
                   <div>
                     <h3 className="text-xl mb-3">Numiko — Head of Design &amp; UX (2015–2017)</h3>
                     <ul className="space-y-1.5">

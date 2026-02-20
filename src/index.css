@@ -101,6 +101,16 @@
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    /*
+     * Large-screen fluid scaling.
+     * Below 1400px: stays at 16px (browser default, Tailwind baseline).
+     * 1400px → ~2240px: interpolates from 16px → 20px smoothly.
+     * Above ~2240px: caps at 20px.
+     * Everything in rem (Tailwind type scale, spacing, containers) scales together.
+     * Fixed/absolute-positioned elements (e.g. nav, floating buttons) must use
+     * px or viewport units if they should NOT scale — check overrides below.
+     */
+    font-size: clamp(16px, 0.5vw + 9px, 20px);
   }
 
   body {
@@ -115,6 +125,7 @@
   h4 {
     font-family: var(--font-serif);
     @apply font-normal tracking-tight text-foreground;
+    text-wrap: balance;
   }
 
   h1 {
@@ -136,6 +147,13 @@
   /* Body text */
   p {
     @apply text-base md:text-lg leading-relaxed;
+    text-wrap: pretty;
+    hyphens: none;
+  }
+
+  li {
+    text-wrap: pretty;
+    hyphens: none;
   }
 
   strong {
@@ -149,7 +167,22 @@
 
   /* Prose styling for markdown content */
   .prose {
+    @apply w-full;
+  }
+
+  .prose>p,
+  .prose>ul,
+  .prose>ol,
+  .prose>h1,
+  .prose>h2,
+  .prose>h3,
+  .prose>h4,
+  .prose>blockquote {
     @apply max-w-prose;
+  }
+
+  .prose img {
+    @apply w-full max-w-none rounded-lg md:rounded-xl my-12;
   }
 
   .prose h1 {
@@ -191,6 +224,7 @@
 
   .prose blockquote {
     @apply border-l-4 border-primary/30 pl-6 italic my-8 text-muted-foreground;
+    hyphens: none;
   }
 
   .prose img {
@@ -241,6 +275,7 @@
     opacity: 0;
     transform: translateY(-6px);
   }
+
   to {
     height: var(--radix-collapsible-content-height);
     opacity: 1;
@@ -254,6 +289,7 @@
     opacity: 1;
     transform: translateY(0);
   }
+
   to {
     height: 0;
     opacity: 0;

@@ -51,7 +51,7 @@ export function AnimatedBackground() {
 
                 {/* Gradient movement animation */}
                 <div
-                    className="absolute inset-[-50%] animate-gradient-move"
+                    className="absolute inset-[-150%] animate-gradient-move"
                     style={{
                         background: `
               radial-gradient(

@@ -2,7 +2,8 @@
 title: Awaze
 summary: Leading product design for high-traffic digital platforms, shaping both the experiences customers see and the teams and systems that deliver them.
 role: Head of Product Design
-period: 2021–Present
+date: 2021-01-01
+period: 2021 > Today
 tags: [leadership, design-systems, experimentation]
 protected: true
 featured: true

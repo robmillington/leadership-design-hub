@@ -143,7 +143,13 @@ export default function CaseStudyDetail() {
               </div>
 
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
-                {caseStudy.meta.date && (
+                {caseStudy.meta.period && (
+                  <>
+                    <span className="font-medium text-foreground">{caseStudy.meta.period}</span>
+                    <span>·</span>
+                  </>
+                )}
+                {!caseStudy.meta.period && caseStudy.meta.date && (
                   <>
                     <time dateTime={caseStudy.meta.date}>
                       {formatDate(caseStudy.meta.date)}
