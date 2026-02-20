@@ -11,7 +11,7 @@ function getFeaturedOrRecent<T>(items: T[], featured: (i: T) => boolean, take: n
 
 const allCaseStudies = getAll("case-studies");
 const allWriting = getAll("writing");
-const featuredCaseStudies = getFeaturedOrRecent(allCaseStudies, (i) => !!i.meta.featured, 3);
+const featuredCaseStudies = getFeaturedOrRecent(allCaseStudies, (i) => !!i.meta.featured, 5);
 const featuredWriting = getFeaturedOrRecent(allWriting, (i) => !!i.meta.featured, 2);
 
 export default function Index() {
@@ -59,7 +59,7 @@ export default function Index() {
             </Link>
           </div>
           <div className="space-y-12">
-            {featuredCaseStudies.slice(0, 3).map((item) => (
+            {featuredCaseStudies.slice(0, 5).map((item) => (
               <ContentCard
                 key={item.slug}
                 item={item}

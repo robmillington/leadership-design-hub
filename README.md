@@ -39,7 +39,60 @@ npm install
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173`
+The site will be available at `http://localhost:8080`
+
+## Testing
+
+```bash
+# Run tests once
+npm run test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+## Code Quality
+
+```bash
+# Run linter
+npm run lint
+
+# Fix linting issues automatically
+npm run lint:fix
+
+# Format code with Prettier
+npm run format
+
+# Check code formatting
+npm run format:check
+```
+
+## Building for Production
+
+```bash
+# Build static site
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+The build output will be in the `dist/` folder.
+
+### Pre-Deployment Check
+
+Run all quality checks before deploying:
+
+```bash
+npm run pre-deploy
+```
+
+This runs linting, formatting checks, tests, and builds the production bundle.
+
+See [DEPLOY_CHECKLIST.md](./DEPLOY_CHECKLIST.md) for the full pre-deployment verification process.
 
 ## Building for Production
 

@@ -4,6 +4,7 @@ import { AnimatedBackground } from "./components/AnimatedBackground";
 import { PageTransition } from "./components/PageTransition";
 import { Header } from "./components/Header";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import CaseStudies from "./pages/CaseStudies";
 import CaseStudyDetail from "./pages/CaseStudyDetail";
@@ -33,14 +34,14 @@ function AnimatedRoutes() {
 }
 
 const App = () => (
-  <>
+  <ErrorBoundary>
     <AnimatedBackground />
     <ThemeToggle />
     <BrowserRouter>
       <Header />
       <AnimatedRoutes />
     </BrowserRouter>
-  </>
+  </ErrorBoundary>
 );
 
 export default App;

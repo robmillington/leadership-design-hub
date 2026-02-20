@@ -13,6 +13,7 @@ export interface ContentMeta {
   role?: string;
   period?: string;
   protected?: boolean;
+  externalUrl?: string;
 }
 
 export interface ContentItem {
@@ -29,22 +30,44 @@ function slugFromPath(filePath: string): string {
 }
 
 function parseRaw(type: ContentType, raw: string, slug: string): ContentItem {
-  const { data, content } = matter(raw);
-  const meta: ContentMeta = {
-    title: (data.title as string) ?? "",
-    summary: data.summary as string | undefined,
-    date: data.date as string | undefined,
-    tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
-    featured:
-      data.featured === true ||
-      (typeof data.featured === "string" && data.featured.toLowerCase() === "true"),
-    role: data.role as string | undefined,
-    period: data.period as string | undefined,
-    protected:
-      data.protected === true ||
-      (typeof data.protected === "string" && data.protected.toLowerCase() === "true"),
-  };
-  return { type, slug, meta, body: (content ?? "").trim() };
+  try {
+    const { data, content } = matter(raw);
+
+    // Validate required fields
+    if (!data.title || typeof data.title !== 'string') {
+      console.warn(`Missing or invalid title for ${type}/${slug}, using slug as fallback`);
+    }
+
+    const meta: ContentMeta = {
+      title: (data.title as string) || slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+      summary: data.summary as string | undefined,
+      date: data.date as string | undefined,
+      tags: Array.isArray(data.tags) ? (data.tags as string[]) : undefined,
+      featured:
+        data.featured === true ||
+        (typeof data.featured === "string" && data.featured.toLowerCase() === "true"),
+      role: data.role as string | undefined,
+      period: data.period as string | undefined,
+      externalUrl: data.externalUrl as string | undefined,
+      protected:
+        data.protected === true ||
+        (typeof data.protected === "string" && data.protected.toLowerCase() === "true"),
+    };
+
+    return { type, slug, meta, body: (content ?? "").trim() };
+  } catch (error) {
+    console.error(`Error parsing ${type}/${slug}:`, error);
+    // Return minimal valid item on error
+    return {
+      type,
+      slug,
+      meta: {
+        title: slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+        summary: "Content unavailable",
+      },
+      body: "",
+    };
+  }
 }
 
 function loadFromGlob(
@@ -197,10 +220,20 @@ export function calculateReadingTime(content: string): number {
 
 export function formatDate(dateString: string): string {
   if (!dateString) return "";
-  const date = new Date(dateString);
-  return date.toLocaleDateString("en-GB", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  try {
+    const date = new Date(dateString);
+    // Check if date is valid
+    if (isNaN(date.getTime())) {
+      console.warn(`Invalid date: ${dateString}`);
+      return dateString; // Return original string if invalid
+    }
+    return date.toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  } catch (error) {
+    console.error(`Error formatting date ${dateString}:`, error);
+    return dateString;
+  }
 }

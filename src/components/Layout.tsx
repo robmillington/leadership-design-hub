@@ -7,9 +7,19 @@ interface LayoutProps {
 export function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen">
-      <main className="pt-24">{children}</main>
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg"
+      >
+        Skip to main content
+      </a>
 
-      <footer className="border-t border-border mt-24">
+      <main id="main-content" className="pt-24">
+        {children}
+      </main>
+
+      <footer className="border-t border-border mt-24" role="contentinfo">
         <div className="container-wide py-12">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
             <p>© {new Date().getFullYear()} · Rob Millington</p>
@@ -22,7 +32,7 @@ export function Layout({ children }: LayoutProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="LinkedIn"
+                aria-label="Connect on LinkedIn"
               >
                 <Linkedin size={20} />
               </a>
