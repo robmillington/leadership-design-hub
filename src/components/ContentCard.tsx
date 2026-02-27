@@ -21,7 +21,7 @@ export function ContentCard({
     <article className="group">
       <Link
         to={item.meta.externalUrl || `${basePath}/${item.slug}`}
-        className="block no-underline -mx-4 px-4 py-4 rounded-xl transition-all duration-300 hover:bg-black/5 dark:hover:bg-white/5"
+        className="block no-underline -mx-4 px-4 py-4 rounded-xl transition-all duration-300 hover:bg-white/50 dark:hover:bg-white/5 border border-transparent hover:border-black/5 dark:hover:border-white/5"
       >
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-sm text-muted-foreground transition-colors group-hover:text-muted-foreground/80">

@@ -22,13 +22,13 @@ export default function Leadership() {
               and focusing on hiring, systems, rituals, and strategic direction.
             </p>
             <p>
-              I believe in <strong>high autonomy with high alignment</strong>. Teams should
+              I believe in high autonomy with high alignment. Teams should
               have significant freedom in how they approach problems, but they need shared
               principles and goals to coordinate effectively. My role is to establish that
               alignment and then get out of the way.
             </p>
             <p>
-              I invest heavily in <strong>feedback culture</strong>. Regular crits, structured
+              I invest heavily in feedback culture. Regular crits, structured
               reviews, and candid 1:1s create the environment where designers grow. I'd rather
               have uncomfortable conversations early than discover problems late.
             </p>
@@ -45,7 +45,7 @@ export default function Leadership() {
               that produce quality rather than producing it yourself.
             </p>
             <p>
-              This means <strong>encoding craft into infrastructure</strong>: design systems
+              This means encoding craft into infrastructure: design systems
               that make good decisions the default, review processes that surface issues
               early, and documentation that captures not just what we build but why.
             </p>
@@ -63,17 +63,17 @@ export default function Leadership() {
           <div className="prose">
             <p>
               Design systems are often misunderstood as component libraries. They're actually
-              <strong>encoded design decisions</strong>—a way to scale taste and judgment
+              encoded design decisions - a way to scale taste and judgment
               across an organisation.
             </p>
             <p>
-              I favour <strong>federated models</strong> over centralised design systems teams.
+              I favour federated models over centralised design systems teams.
               When every product team contributes to the system, you get better buy-in and
               more relevant components. The trade-off is consistency, which you manage through
               clear governance and shared principles.
             </p>
             <p>
-              <strong>Tokens before themes.</strong> Investing in design tokens (colour, spacing,
+              Tokens before themes. Investing in design tokens (colour, spacing,
               typography) creates more leverage than building themed component variants. Products
               can maintain distinct personalities while sharing foundational decisions.
             </p>
@@ -86,17 +86,17 @@ export default function Leadership() {
           <div className="prose">
             <p>
               Research without infrastructure creates noise, not insight. The goal of research
-              ops is to make learning <strong>compound</strong>—each study building on previous
+              ops is to make learning compound - each study building on previous
               understanding rather than starting from scratch.
             </p>
             <p>
-              I believe in <strong>enabling designers to research</strong> rather than
+              I believe in enabling designers to research rather than
               centralising research in a specialist team. This means building recruitment
               panels, repository systems, and methodology templates that make it easy for
               any designer to run rigorous studies.
             </p>
             <p>
-              <strong>Synthesis is the multiplier.</strong> Regular cross-team synthesis
+              Synthesis is the multiplier. Regular cross-team synthesis
               sessions surface patterns that individual studies miss. This is where research
               ops creates real strategic value.
             </p>
@@ -110,16 +110,16 @@ export default function Leadership() {
             <p>
               The best product work happens when design, product management, and engineering
               operate as genuine partners rather than a handoff chain. This requires
-              <strong>shared context from the start</strong>—bringing all disciplines into
+              shared context from the start bringing all disciplines into
               problem framing, not just solution execution.
             </p>
             <p>
-              I push for <strong>early technical involvement</strong> in design exploration.
+              I push for early technical involvement in design exploration.
               Engineers should be sketching alongside designers, not receiving finished specs.
               This catches feasibility issues early and often produces better solutions.
             </p>
             <p>
-              With PMs, I focus on <strong>aligning on problems before solutions</strong>.
+              With PMs, I focus on aligning on problems before solutions.
               It's easy to spend months refining a design for the wrong problem. Regular
               recalibration on user needs and business goals keeps us honest.
             </p>
